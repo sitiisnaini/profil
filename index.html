@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website profil profesional Siti Isnaini, mahasiswa Teknologi Rekayasa Elektro Universitas Gadjah Mada yang tertarik pada sains, kelistrikan, dan energi terbarukan.">
+  <meta name="theme-color" content="#b91c2c">
+  <title>Siti Isnaini | Profil</title>
+  <style>
+    :root {
+      --red: #b91c2c;
+      --red-dark: #881723;
+      --ink: #202124;
+      --muted: #62666d;
+      --paper: #ffffff;
+      --soft: #f7f7f8;
+      --line: #e7e7ea;
+      --max-width: 1120px;
+      --radius: 18px;
+      --shadow: 0 12px 34px rgba(32, 33, 36, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: var(--red); }
+    a:focus-visible, button:focus-visible { outline: 3px solid #ef9aa3; outline-offset: 3px; }
+    .container { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-wrap {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .brand {
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+    .brand span { color: var(--red); }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 18px; }
+    .nav-links a {
+      color: #44464b;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .nav-links a:hover { color: var(--red); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 78px 0 72px;
+      background: linear-gradient(135deg, #fff 0%, #fff 61%, #fff2f3 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border: 54px solid rgba(185, 28, 44, 0.06);
+      border-radius: 50%;
+      right: -130px;
+      top: -140px;
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.45fr 0.7fr;
+      align-items: center;
+      gap: 54px;
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--red);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      letter-spacing: -0.065em;
+      line-height: 1.05;
+    }
+    .hero h1 span { color: var(--red); }
+    .tagline {
+      max-width: 700px;
+      margin: 22px 0 0;
+      color: #45474c;
+      font-size: clamp(1.04rem, 2vw, 1.28rem);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 18px;
+      border: 1px solid var(--red);
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #fff; background: var(--red); }
+    .button-primary:hover { background: var(--red-dark); }
+    .button-secondary { color: var(--red); background: transparent; }
+    .button-secondary:hover { background: #fff0f1; }
+
+    .profile-frame {
+      justify-self: center;
+      width: min(270px, 100%);
+      aspect-ratio: 1;
+      padding: 10px;
+      border: 1px solid #f0c7cb;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .avatar-placeholder {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-size: 4.3rem;
+      font-weight: 800;
+      letter-spacing: -0.06em;
+    }
+    /* Setelah foto siap, ganti elemen .avatar-placeholder dengan:
+       <img class="profile-photo" src="foto-siti.jpg" alt="Foto profil Siti Isnaini">
+    */
+    .profile-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .photo-caption { margin: 12px 0 0; color: var(--muted); font-size: 0.78rem; text-align: center; }
+
+    section { padding: 76px 0; }
+    section:nth-of-type(even) { background: var(--soft); }
+    .section-heading { max-width: 720px; margin-bottom: 32px; }
+    .section-kicker {
+      margin: 0 0 6px;
+      color: var(--red);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.55rem); line-height: 1.2; letter-spacing: -0.045em; }
+    .section-intro { margin: 12px 0 0; color: var(--muted); }
+    .about-card, .timeline-card, .skill-card, .contact-card, .highlight-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 22px rgba(32, 33, 36, 0.035);
+    }
+    .about-card { padding: 28px; font-size: 1.04rem; }
+    .about-card p { margin: 0; }
+    .education-grid, .skills-grid, .highlights-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .timeline-card { padding: 24px; }
+    .timeline-card .date, .item-date { color: var(--red); font-size: 0.84rem; font-weight: 800; }
+    .timeline-card h3, .item h3, .skill-card h3, .highlight-card h3 { margin: 7px 0; font-size: 1.12rem; line-height: 1.35; }
+    .timeline-card p, .highlight-card p { margin: 0; color: var(--muted); }
+    .subline { font-weight: 700; color: #44464b !important; }
+    .note-list { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
+    .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .skill-card { padding: 23px; }
+    .skill-card h3 { margin-top: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid #f1d1d4;
+      border-radius: 999px;
+      color: #74202a;
+      background: #fff6f7;
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+    .experience-list { display: grid; gap: 16px; }
+    .item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 22px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    .item h3 { margin-top: 0; }
+    .item p { margin: 5px 0 0; color: var(--muted); }
+    .item ul { margin: 10px 0 0; padding-left: 19px; color: var(--muted); }
+    .item li + li { margin-top: 4px; }
+    .subsection-title { margin: 42px 0 18px; font-size: 1.35rem; }
+    .highlight-card { padding: 22px; }
+    .highlight-card strong { color: var(--ink); }
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 30px;
+    }
+    .contact-card p { margin: 9px 0 0; color: var(--muted); }
+    .contact-card a.email-link { font-weight: 800; overflow-wrap: anywhere; }
+    .linkedin-note { margin-top: 10px !important; font-size: 0.92rem; }
+    footer { padding: 24px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.88rem; }
+    .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+    .back-top { color: var(--red); font-weight: 700; text-decoration: none; }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+      .profile-frame { grid-row: 1; width: 205px; }
+      .hero-copy { text-align: center; }
+      .hero-actions { justify-content: center; }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .item { grid-template-columns: 1fr; gap: 7px; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(var(--max-width), calc(100% - 28px)); }
+      .nav-wrap { align-items: flex-start; flex-direction: column; padding: 14px 0; gap: 10px; }
+      .nav-links { justify-content: flex-start; gap: 8px 14px; }
+      .nav-links a { font-size: 0.83rem; }
+      .hero { padding: 48px 0 52px; }
+      section { padding: 54px 0; }
+      .education-grid, .skills-grid, .highlights-grid { grid-template-columns: 1fr; }
+      .about-card, .timeline-card, .skill-card, .item, .highlight-card, .contact-card { padding: 20px; }
+      .contact-card { grid-template-columns: 1fr; }
+      .contact-card .button { justify-self: start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#beranda" aria-label="Siti Isnaini, kembali ke beranda">SITI <span>ISNAINI</span></a>
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a href="#tentang">Tentang</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#keterampilan">Keterampilan</a>
+        <a href="#pengalaman">Pengalaman</a>
+        <a href="#prestasi">Prestasi</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Profil · Yogyakarta, Indonesia</p>
+          <h1>Siti <span>Isnaini</span></h1>
+          <p class="tagline">Mahasiswa Teknologi Rekayasa Elektro UGM yang tertarik pada sains, kelistrikan, dan pengembangan energi terbarukan Indonesia</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#pengalaman">Lihat Pengalaman</a>
+            <a class="button button-secondary" href="#kontak">Hubungi Saya</a>
+          </div>
+        </div>
+        <div>
+          <div class="profile-frame" aria-label="Tempat foto profil Siti Isnaini">
+            <img class="profile-photo"
+            src="foto-siti.png"
+            alt="Foto profil Siti Isnaini">
+          </div>
+          <p class="photo-caption"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Perkenalan</p>
+          <h2>Tentang Saya</h2>
+        </div>
+        <div class="about-card">
+          <p>Saya sedang menempuh pendidikan D4 Teknologi Rekayasa Elektro di Universitas Gadjah Mada. Saya memiliki minat pada sains, kelistrikan, serta pengembangan energi terbarukan di Indonesia. Selama sekolah, saya aktif dalam organisasi, perlombaan, kegiatan kerelawanan, dan proyek yang melatih kepemimpinan, penulisan, serta kerja sama tim. Saat ini, saya terus mengembangkan pengetahuan dan keterampilan agar dapat berkontribusi dalam kemajuan bidang energi terbarukan dan menginspirasi generasi muda.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pendidikan">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Latar Belakang</p>
+          <h2>Pendidikan</h2>
+        </div>
+        <div class="education-grid">
+          <article class="timeline-card">
+            <span class="date">2026 – Sekarang</span>
+            <h3>Universitas Gadjah Mada</h3>
+            <p class="subline">D4 Teknologi Rekayasa Elektro</p>
+            <p>Departemen Teknik Elektro dan Informatika, Sekolah Vokasi.</p>
+            <ul class="note-list">
+              <li>Diterima melalui jalur CBT Universitas Gadjah Mada.</li>
+              <li>Rata-rata skor UTBK: 657,99.</li>
+            </ul>
+          </article>
+          <article class="timeline-card">
+            <span class="date">2022 – 2025</span>
+            <h3>SMA Negeri 1 Kedungwuni</h3>
+            <p class="subline">Sekolah Menengah Atas</p>
+            <p>Lulus dengan nilai rata-rata 91,21 dari 100 dan meraih peringkat empat besar selama enam semester.</p>
+            <p style="margin-top: 10px;">Aktif mengikuti organisasi dan perlombaan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="keterampilan">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Kemampuan</p>
+          <h2>Keterampilan</h2>
+          <p class="section-intro"></p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Bahasa</h3>
+            <div class="tags">
+              <span class="tag">Bahasa Indonesia (lisan dan tulis)</span>
+              <span class="tag">Bahasa Inggris (speaking dan writing)</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <h3>Teknis dan Digital</h3>
+            <div class="tags">
+              <span class="tag">Microsoft Office</span>
+              <span class="tag">Canva</span>
+              <span class="tag">CapCut</span>
+              <span class="tag">Picsart</span>
+              <span class="tag">Proyek Arduino Uno</span>
+            </div>
+          </article>
+          <article class="skill-card">
+            <h3>Soft Skills</h3>
+            <div class="tags">
+              <span class="tag">Kepemimpinan</span>
+              <span class="tag">Berpikir Kritis</span>
+              <span class="tag">Pemecahan Masalah</span>
+              <span class="tag">Kerja Sama Tim</span>
+              <span class="tag">Public Speaking</span>
+              <span class="tag">Manajemen Target</span>
+              <span class="tag">Berpikir Terstruktur</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pengalaman">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Kegiatan dan Karya</p>
+          <h2>Proyek dan Pengalaman</h2>
+          <p class="section-intro"></p>
+        </div>
+        <div class="experience-list">
+          <article class="item">
+            <div class="item-date">Agustus 2026</div>
+            <div>
+              <h3>Action Plan Cerdas Sejak Dini: Kurangi Distraksi Gadget</h3>
+              <p><strong>Anggota Divisi Acara · Yogyakarta</strong></p>
+              <ul>
+                <li>Merancang naskah drama dan artikel serta menentukan properti dan kostum.</li>
+                <li>Menampilkan drama dan mendampingi anak-anak dalam acara di Balai Serba Guna Cokrodiningratan, Kota Yogyakarta.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">Juni 2026</div>
+            <div>
+              <h3>Aksi Penanaman Mangrove Ekowisata Mulyosari</h3>
+              <p><strong>Relawan · Kabupaten Pekalongan</strong></p>
+              <p>Mempelajari manfaat tanaman mangrove dan ikut melaksanakan penanaman mangrove di Ekowisata Mulyosari.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">Desember 2025 – Januari 2026</div>
+            <div>
+              <h3>Relawan GG Beraksi Alun-Alun Kajen</h3>
+              <p><strong>Kerelawanan Lingkungan · Kabupaten Pekalongan</strong></p>
+              <p>Mengikuti kegiatan yang mencakup kebersihan area, pemilahan sampah, edukasi, dan pengelolaan sampah serta memperluas wawasan mengenai isu lingkungan global.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">Januari – Februari 2025</div>
+            <div>
+              <h3>P5 Ecotechnology</h3>
+              <p><strong>Proyek teknologi berbasis Arduino Uno</strong></p>
+              <p>Merancang dan membuat alat pemutus listrik berbasis suara sebagai inovasi untuk membantu mengurangi penggunaan sumber daya alam tak terbarukan secara berlebihan.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">September 2025</div>
+            <div>
+              <h3>P5 Bangunlah Jiwa dan Raganya</h3>
+              <p>Menentukan dan mewawancarai narasumber inspiratif, menyusun artikel, serta membantu penyuntingan video hasil wawancara.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">Oktober – November 2023</div>
+            <div>
+              <h3>P5 Filosofi Permainan Tradisional</h3>
+              <p><strong>Ketua Kelompok</strong></p>
+              <p>Merancang ide dan pembuatan permainan tradisional Rangku Alu serta membuat infografis mengenai permainan tersebut.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">Februari – Maret 2023</div>
+            <div>
+              <h3>P5 Kewirausahaan</h3>
+              <p><strong>Wakil Ketua Kelompok</strong></p>
+              <p>Mengembangkan ide usaha olahan singkong bernama “Cassava’s Thompson”, termasuk perencanaan keuntungan dan kerugian serta desain produk dan kemasan.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">September – November 2022</div>
+            <div>
+              <h3>P5 Bhinneka Tunggal Ika: Drama Musikal</h3>
+              <p><strong>Wakil Ketua Pelaksana</strong></p>
+              <p>Merancang naskah, menentukan properti dan kostum, mengawasi persiapan hingga pelaksanaan acara, serta melatih anggota untuk pementasan drama musikal.</p>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">Agustus – September 2022</div>
+            <div>
+              <h3>P5 Gaya Hidup Berkelanjutan: Pengelolaan Sampah Organik</h3>
+              <p><strong>Ketua Kelompok</strong></p>
+              <p>Membuat pupuk dari sampah daun kering menggunakan bahan alami yang tersedia serta merancang kemasan agar produk siap dipasarkan.</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="subsection-title">Pengalaman Organisasi</h3>
+        <div class="experience-list">
+          <article class="item">
+            <div class="item-date">2023 – 2024</div>
+            <div>
+              <h3>Smandung Media — Ketua Divisi Kepenulisan</h3>
+              <ul>
+                <li>Menggerakkan tim dalam merancang karya tulis serta menyusun caption dan artikel untuk Instagram dan website organisasi.</li>
+                <li>Mewakili SMA Negeri 1 Kedungwuni dalam beberapa lomba karya tulis dan menjadi pengisi suara video profil sekolah.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="item">
+            <div class="item-date">2022 – 2023</div>
+            <div>
+              <h3>Smandung Media — Anggota</h3>
+              <p>Menyusun cerita pendek dan artikel serta berperan sebagai reporter utama dan reporter lapangan dalam liputan berita.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="prestasi">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Pencapaian</p>
+          <h2>Prestasi, Beasiswa, dan Sertifikasi</h2>
+        </div>
+        <div class="highlights-grid">
+          <article class="highlight-card">
+            <p class="item-date">2023 · Tingkat Nasional</p>
+            <h3>Finalis Lomba Jurnalistik (FeLSI)</h3>
+            <p>Festival dan Lomba Seni Siswa Nasional (FLS2N), diselenggarakan oleh Pusat Prestasi Nasional.</p>
+          </article>
+          <article class="highlight-card">
+            <p class="item-date">2023 · Kabupaten Pekalongan</p>
+            <h3>Juara 3 Lomba Jurnalistik (FeLSI)</h3>
+            <p>Festival dan Lomba Seni Siswa Nasional (FLS2N), diselenggarakan oleh Dinas Pendidikan dan Kebudayaan Kabupaten Pekalongan.</p>
+          </article>
+          <article class="highlight-card">
+            <p class="item-date">2024 · Kabupaten Pekalongan</p>
+            <h3>Peserta Lomba Jurnalistik (FeLSI)</h3>
+            <p>Festival dan Lomba Seni Siswa Nasional (FLS2N) tingkat kabupaten.</p>
+          </article>
+          <article class="highlight-card">
+            <p class="item-date">2024 · Kabupaten Pekalongan</p>
+            <h3>Peserta OSN-K Bidang Fisika</h3>
+            <p>Olimpiade Sains Nasional tingkat kabupaten yang diselenggarakan oleh Pusat Prestasi Nasional.</p>
+          </article>
+          <article class="highlight-card">
+            <p class="item-date">2023 · Tingkat Nasional</p>
+            <h3>Peserta Lomba “Terima Kasih Guruku”</h3>
+            <p>Bagian dari Apresiasi Guru dan Tenaga Kependidikan.</p>
+          </article>
+          <article class="highlight-card">
+            <p class="item-date">2023 · Kabupaten Pekalongan</p>
+            <h3>Peserta OSN-K Bidang Kebumian</h3>
+            <p>Olimpiade Sains Nasional tingkat kabupaten yang diselenggarakan oleh Pusat Prestasi Nasional.</p>
+          </article>
+          <article class="highlight-card">
+            <p class="item-date">Januari – Juli 2026</p>
+            <h3>BISA Project</h3>
+            <p>Riwayat beasiswa dari Kitabisa dan Salam Setara, sesuai informasi dalam CV.</p>
+          </article>
+          <article class="highlight-card">
+            <p class="item-date">Sertifikasi Bahasa</p>
+            <h3>Uji Kemahiran Berbahasa Indonesia (UKBI)</h3>
+            <p>Sertifikat Kemampuan Bahasa Indonesia dengan predikat <strong>Sangat Unggul</strong>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Mari Terhubung</p>
+          <h2>Kontak</h2>
+          <p class="section-intro"></p>
+          </div>
+          <div class="contact-card">
+            <div>
+              <h3>Email</h3>
+              <a class="email-link" href="mailto:sitiisnaini@mail.ugm.ac.id">
+                sitiisnaini@mail.ugm.ac.id
+              </a>
+            </div>
+          
+            <a class="button button-primary"
+            href="mailto:sitiisnaini@mail.ugm.ac.id">
+              Kirim Email
+            </a>
+          </div>
+        
+          <div class="contact-card">
+            <div>
+              <h3>LinkedIn</h3>
+              <a class="email-link"
+              href="https://www.linkedin.com/in/siti-isnaini-b0273b411/"
+              target="_blank"
+              rel="noopener noreferrer">
+              linkedin.com/in/siti-isnaini-b0273b411
+            </a>
+          </div>
+        
+          <a class="button button-primary"
+          href="https://www.linkedin.com/in/siti-isnaini-b0273b411/"
+          target="_blank"
+          rel="noopener noreferrer">
+          Lihat Profil LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© <span id="year">2026</span> Siti Isnaini · Profil</span>
+      <a class="back-top" href="#beranda">Kembali ke atas ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
